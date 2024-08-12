@@ -3,6 +3,8 @@ from django.db import models
 class Education(models.Model):
     title = models.CharField(max_length=100)
     institution = models.CharField(max_length=100, default='')
+    subtitle = models.CharField(max_length=100, blank=True, null=True)
+    role = models.CharField(max_length=100, blank=True, null=True)
     location = models.CharField(max_length=100)
     grade = models.CharField(max_length=20, blank=True, null=True)
     start_date = models.DateField()
@@ -24,10 +26,13 @@ class EducationDescription(models.Model):
 class Experience(models.Model):
     title = models.CharField(max_length=100)
     company = models.CharField(max_length=100, default='')
+    subtitle = models.CharField(max_length=100, blank=True, null=True)
+    role = models.CharField(max_length=100, blank=True, null=True)
     location = models.CharField(max_length=100)
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
     ranking = models.IntegerField(blank=True, null=True)
+
 
     def __str__(self):
         return f"{self.title} at {self.company}"

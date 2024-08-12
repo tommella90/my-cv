@@ -1,2 +1,11 @@
 venv
 db.sqlite3
+__pycache__/
+
+core/__pycache__/
+core/migrations/__pycache__/
+
+core/cv/__pycache__/
+core/cv/migrations/__pycache__/
+
+.gitignore
