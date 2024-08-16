@@ -22,6 +22,7 @@ class Command(BaseCommand):
         except Exception as e:
             self.stderr.write(self.style.ERROR(f'Error exporting data: {e}'))
 
+
     def get_education_dataframe(self):
         # Query Education data and convert to DataFrame
         data = list(Education.objects.all().values(
@@ -38,26 +39,7 @@ class Command(BaseCommand):
         today = pd.Timestamp.now()
         df['end_date'] = df['end_date'].fillna(today)
 
-        # Generate monthly rows
-        rows = []
-        for _, row in df.iterrows():
-            months = pd.date_range(start=row['start_date'], end=row['end_date'], freq='MS')
-            for month in months:
-                rows.append([
-                    row['id'],
-                    row['title'],
-                    row['institution'],
-                    row['subtitle'],
-                    row['role'],
-                    row['location'],
-                    month.strftime('%Y-%m'),
-                    row['ranking']
-                ])
-                
-        education_df = pd.DataFrame(rows, columns=[
-            'id', 'title', 'institution', 'subtitle', 'role', 'location', 'month', 'ranking'
-        ])
-        return education_df
+        return df
 
     def get_experience_dataframe(self):
         # Query Experience data and convert to DataFrame
@@ -75,40 +57,9 @@ class Command(BaseCommand):
         today = pd.Timestamp.now()
         df['end_date'] = df['end_date'].fillna(today)
 
-        # Generate monthly rows
-        rows = []
-        for _, row in df.iterrows():
-            months = pd.date_range(start=row['start_date'], end=row['end_date'], freq='MS')
-            for month in months:
-                rows.append([
-                    row['id'],
-                    row['title'],
-                    row['company'],
-                    row['subtitle'],
-                    row['role'],
-                    row['location'],
-                    month.strftime('%Y-%m'),
-                    row['ranking']
-                ])
-                
-        experience_df = pd.DataFrame(rows, columns=[
-            'id', 'title', 'company', 'subtitle', 'role', 'location', 'month', 'ranking'
-        ])
-        return experience_df
-
-    def add_time_integer(self, df):
-        # Convert 'month' to datetime to sort and create a sequential index
-        df['month'] = pd.to_datetime(df['month'], format='%Y-%m')
-        
-        # Create a unique sorted list of months
-        unique_months = sorted(df['month'].unique())
-        
-        # Create a mapping from month to time_integer
-        month_to_integer = {month: i + 1 for i, month in enumerate(unique_months)}
-        
-        # Map the time_integer to the DataFrame
-        df['time_integer'] = df['month'].map(month_to_integer)
         return df
+
+
 
     def get_combined_dataframe(self):
         # Get the education and experience dataframes
@@ -117,7 +68,30 @@ class Command(BaseCommand):
 
         # Concatenate dataframes
         combined_df = pd.concat([education_df, experience_df], ignore_index=True)
+        combined_df = self.get_time_integers(combined_df)
 
         # Add time_integer to the combined dataframe
-        combined_df = self.add_time_integer(combined_df)
+        # combined_df = self.add_time_integer(combined_df)
+        
         return combined_df
+
+
+    def get_time_integers(self, df):
+        # time in job
+        df['months_diff'] = (df['end_date'] - df['start_date']) / pd.Timedelta(days=30)
+        df['months_diff'] = df['months_diff'].apply(lambda x: int(x) + 1)
+
+        # time from first month
+        first_month = df['start_date'].min()
+        df['diff_start_from_first_month'] = (df['start_date'] - first_month) / pd.Timedelta(days=30)
+        df['diff_start_from_first_month'] = df['diff_start_from_first_month'].apply(lambda x: int(x) + 1)
+
+        df['diff_end_from_first_month'] = (df['end_date'] - first_month) / pd.Timedelta(days=30)
+        df['diff_end_from_first_month'] = df['diff_end_from_first_month'].apply(lambda x: int(x) + 1)
+
+        df['middle_month'] = (df['diff_end_from_first_month'] + df['diff_start_from_first_month']) / 2
+        df['middle_month'] = df['middle_month'].apply(lambda x: int(x) + 1)
+
+        df['y'] = df['ranking'] * (.1)
+        
+        return df
