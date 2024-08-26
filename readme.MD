@@ -78,3 +78,26 @@ Following these steps will guide you through building and deploying your CV web 
 ## Redis
 docker run -d -p 6379:6379 redis
 celery -A core worker --loglevel=info
+
+## Deploy on heroku
+- in wsgi.py
+   os.environ.setdefault("DJANGO_SETTINGS_MODULE", "core.settings.dev")
+- Create app in heroku --> get the domain
+- Add this in settings
+   ALLOWED_HOSTS = ["<domain-name'"]
+- Generate secret key (go to https://djecrety.ir/)
+- Write this on heroku cli:
+   ❯ heroku config:set DJANGO_SETTINGS_MODULE=core.settings.prod
+- choose a db provider (heroku postgres)
+- ❯ heroku config 
+   will return the DATABASE_URL.  
+  ❯ heroku config:set DATABASE_URL=<url_name>
+  it will return a db string. 
+- Now configure the database. U need to install *dj-database-url*
+   add this in setting prod: 
+```
+   DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+}
+```
+  
