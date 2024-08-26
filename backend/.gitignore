@@ -1,3 +1,5 @@
+core/settings/prod.py
+
 venv
 db.sqlite3
 __pycache__/
