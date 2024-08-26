@@ -1,4 +1,5 @@
 from django.db import models
+from .validators import validate_file_size
 
 class Education(models.Model):
     title = models.CharField(max_length=100)
@@ -13,6 +14,11 @@ class Education(models.Model):
 
     def __str__(self):
         return f"{self.institution} at {self.title}"
+
+
+class EducationImage(models.Model):
+    education = models.ForeignKey(Education, related_name='images', on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='education_images/')
 
 
 class EducationDescription(models.Model):
@@ -44,3 +50,11 @@ class ExperienceDescription(models.Model):
 
     def __str__(self):
         return self.description
+
+
+class ExperienceImage(models.Model):
+    experience = models.ForeignKey(Experience, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(
+        upload_to="experience_images/", 
+        validators=[validate_file_size]
+        )

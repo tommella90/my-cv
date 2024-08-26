@@ -3,6 +3,7 @@
     <AboutView/>
     <ExperiencesView/>
     <EducationsView/>
+    <ParticlesBackgroundView/>
   </div>
 </template>
 
@@ -10,10 +11,12 @@
 import AboutView from './components/AboutView.vue';
 import EducationsView from './components/EducationsView.vue';
 import ExperiencesView from './components/ExperiencesView.vue';
+import ParticlesBackgroundView from './components/ParticlesBackgroundView.vue';
 
 export default {
   name: 'App',
   components: {
+    ParticlesBackgroundView,
     AboutView,
     ExperiencesView,
     EducationsView,

@@ -73,3 +73,8 @@ Sure, I can help outline the theoretical steps to build and deploy a small web a
    - Monitor application, set up backups, CI/CD pipelines.
 
 Following these steps will guide you through building and deploying your CV web application. Let me know if you need more details on any specific part!
+
+
+## Redis
+docker run -d -p 6379:6379 redis
+celery -A core worker --loglevel=info

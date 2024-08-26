@@ -60,7 +60,6 @@ class Command(BaseCommand):
         return df
 
 
-
     def get_combined_dataframe(self):
         # Get the education and experience dataframes
         education_df = self.get_education_dataframe()
@@ -70,8 +69,8 @@ class Command(BaseCommand):
         combined_df = pd.concat([education_df, experience_df], ignore_index=True)
         combined_df = self.get_time_integers(combined_df)
 
-        # Add time_integer to the combined dataframe
-        # combined_df = self.add_time_integer(combined_df)
+        
+
         
         return combined_df
 
@@ -93,5 +92,10 @@ class Command(BaseCommand):
         df['middle_month'] = df['middle_month'].apply(lambda x: int(x) + 1)
 
         df['y'] = df['ranking'] * (.1)
+
+        df = df.sort_values(by='start_date')
+        df.reset_index(inplace=True, drop=True)
+        df['time_integer'] = df.index
+        print(df[['title', 'start_date']])
         
         return df

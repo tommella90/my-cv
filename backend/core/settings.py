@@ -1,4 +1,5 @@
 from pathlib import Path
+from celery.schedules import crontab
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -121,13 +122,31 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'cv', 'static')]
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'cv', 'static')]
 
-print(STATICFILES_DIRS)
-print(os.listdir(STATICFILES_DIRS[0]))
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'cv/static')
+]
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# urls: http://127.0.0.1:8000/static/cv_icons/noos.png
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CELERY_BROKER_URL = 'redis://localhost:6379/1'
+CELERY_BEAT_SCHEDULE = {
+    "notity-every-monday": {
+        'task': 'cv.tasks.send_email_task',
+        'schedule': crontab(hour=7, minute=30, day_of_week=1),
+        'args': ('hello',),
+    },
+}
