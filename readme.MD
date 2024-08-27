@@ -100,4 +100,11 @@ celery -A core worker --loglevel=info
     'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 ```
+
+- git push heroku main (to push github repo to heroku)
+   Need to add python buildpack first
   
+- populate the db
+   1. I creted data from admin --> dump them into a json file
+   python manage.py dumpdata > db_dump.json
+   2. 
