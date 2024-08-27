@@ -3,7 +3,7 @@
   "description": "My cv frontend",
   "version": "0.1.0",
   "engines": {
-    "node": "22.x"
+    "node": "20.x"
   },
   "private": true,
   "scripts": {
