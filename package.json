@@ -1,6 +1,10 @@
 {
   "name": "cv-frontend",
+  "description": "My cv frontend",
   "version": "0.1.0",
+  "engines": {
+    "node": "22.x"
+  },
   "private": true,
   "scripts": {
     "serve": "cd frontend/cv-frontend && node_modules/.bin/vue-cli-service serve",
