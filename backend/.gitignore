@@ -1,0 +1,4 @@
+# dev
+core/settings/dev.py
+db_dump.json
+db.sqlite3

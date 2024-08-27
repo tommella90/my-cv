@@ -12,9 +12,11 @@
     "lint": "cd frontend/cv-frontend && npx vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/cli-service": "~5.0.0",
+    "axios": "^1.7.5",
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
-    "@vue/cli-service": "~5.0.0"
+    "vue-particles": "^1.0.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
