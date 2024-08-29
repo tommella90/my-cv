@@ -2,3 +2,9 @@
 core/settings/dev.py
 db_dump.json
 db.sqlite3
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/

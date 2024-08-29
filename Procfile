@@ -1,3 +1,3 @@
 release: python manage.py migrate
-web: gunicorn core.wsgi
-worker: celery -a core.worker
+web: gunicorn core.wsgi:application
+worker: celery -A core worker --loglevel=info

@@ -1,0 +1,29 @@
+version: '3.11'  # Updated version to avoid the 'obsolete' warning
+
+services:
+  web:
+    build:
+      context: ./backend  # Path to the directory containing the Dockerfile
+      dockerfile: Dockerfile  # Ensure this matches the name of your Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app  # Mount the backend directory
+    image: django-backend
+
+  db: 
+    image: postgres:13
+    environment:
+      POSTGRES_USER: u1g78im7n9uvn2
+      POSTGRES_PASSWORD: p190145c91e872a557b03aabe5efa4c1cc42008a8d27388771d7bc4df4db7b762
+      POSTGRES_DB: dfg2v6jvtklu5j
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      [5432:5432]
+
+volumes:
+  postgres_data:
+
