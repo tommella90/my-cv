@@ -1,5 +1,10 @@
+setup:
+  addons:
+  - plan: heroku-postgresql
+    as: DATABASE
 build:
   docker:
     web: backend/Dockerfile
 run:
-  web: bundle exec puma -C config/puma.rb
+  web: gunicorn core.wsgi:application
+
