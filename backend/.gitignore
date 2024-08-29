@@ -1,6 +1,5 @@
 # dev
 core/settings/dev.py
-db_dump.json
 db.sqlite3
 
 # Byte-compiled / optimized / DLL files
