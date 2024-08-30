@@ -10,7 +10,7 @@ env_path = BASE_DIR / '.env'
 # Now you can access the SECRET_KEY from the environment
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = False
+DEBUG = True
 
 SECRET_KEY = "django-insecure-3vz=n^dqr_k)(jj_3l-61@#d9u!dstkoz(675jj^%pnx&u3n5m"
 
