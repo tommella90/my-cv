@@ -5,6 +5,7 @@ setup:
 build:
   docker:
     web: backend/Dockerfile
+    frontend: frontend/Dockerfile
 run:
   web: gunicorn core.wsgi:application
 

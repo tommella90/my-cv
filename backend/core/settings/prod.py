@@ -14,7 +14,7 @@ DATABASES = {
     'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 
-REDIS_URL = os.environ["REDIS_URL"]
-CELERY_BROKER_URL = REDIS_URL
+# REDIS_URL = os.environ["REDIS_URL"]
+# CELERY_BROKER_URL = REDIS_URL
 
 # if u add caches, remember to add the REDIS_URL to the CACHES dict

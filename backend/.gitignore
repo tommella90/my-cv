@@ -1,7 +1,6 @@
 # dev
 core/settings/dev.py
-db.sqlite3
-
+celery.py
 # Byte-compiled / optimized / DLL files
 *.pyc
 *.pyo
