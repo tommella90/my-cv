@@ -1,5 +1,5 @@
 from pathlib import Path
-from celery.schedules import crontab
+# from celery.schedules import crontab
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,11 +34,13 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
+    "core.middleware.SecurityHeadersMiddleware",
 ]
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",  # Your Vue app URL
+    "http://localhost:8080", 
+    "http://localhost:8081",
 ]
 
 
@@ -123,12 +125,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CELERY_BEAT_SCHEDULE = {
-    "notity-every-monday": {
-        'task': 'cv.tasks.send_email_task',
-        'schedule': crontab(hour=7, minute=30, day_of_week=1),
-        'args': ('hello',),
-    },
-}
+# CELERY_BEAT_SCHEDULE = {
+#     "notity-every-monday": {
+#         'task': 'cv.tasks.send_email_task',
+#         'schedule': crontab(hour=7, minute=30, day_of_week=1),
+#         'args': ('hello',),
+#     },
+# }
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
