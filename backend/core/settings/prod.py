@@ -12,10 +12,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = True
 
-SECRET_KEY = "django-insecure-3vz=n^dqr_k)(jj_3l-61@#d9u!dstkoz(675jj^%pnx&u3n5m"
-
 # ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 ALLOWED_HOSTS = ['tommella-cv-prod-ee14d9b8bb74.herokuapp.com', ]
+
+
+DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+}
 
 
 # DATABASES = {
@@ -26,11 +29,6 @@ ALLOWED_HOSTS = ['tommella-cv-prod-ee14d9b8bb74.herokuapp.com', ]
 # }
 
 # SECURE_CROSS_ORIGIN_OPENER_POLICY = None
-
-
-HEROKU_POSTGRES_DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
-}
 
 # REDIS_URL = os.environ["REDIS_URL"]
 # CELERY_BROKER_URL = REDIS_URL
