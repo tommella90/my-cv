@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile-pipenv
+      dockerfile: backend/Dockerfile-requirements
     ports:
       - "8000:8000"
     env_file:
