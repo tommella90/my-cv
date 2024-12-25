@@ -4,9 +4,13 @@ from .common import *
 SECRET_KEY = "django-insecure-3vz=n^dqr_k)(jj_3l-61@#d9u!dstkoz(675jj^%pnx&u3n5m"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ['*']
 DEBUG = True
 
+CORS_ALLOWED_ORIGINS = [
+    "https://tommella90.github.io",
+] 
+ 
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
