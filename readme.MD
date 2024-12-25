@@ -107,3 +107,4 @@ celery -A core worker --loglevel=info
 - populate the db
    1. I creted data from admin --> dump them into a json file
    python manage.py dumpdata > db_dump.json
+
