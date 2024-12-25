@@ -4,7 +4,9 @@ setup:
     as: DATABASE
 build:
   docker:
-    web: backend/Dockerfile-backend
+    # web: backend/Dockerfile-backend
+    web: Dockerfile-pipenv
+
 run:
   web: gunicorn core.wsgi:application
 
