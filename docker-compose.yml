@@ -24,16 +24,6 @@ services:
     ports:
       - "5432:5432"
 
-  # frontend:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile-frontend
-  #   ports:
-  #     - "8080:80"
-  #   environment:
-  #     - NODE_ENV=development
-  #   image: vue-frontend
-
 
 volumes:
   postgres_data:
