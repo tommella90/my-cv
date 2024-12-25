@@ -3,8 +3,8 @@
 services:
   web:
     build:
-      context: .
-      dockerfile: backend/Dockerfile-requirements
+      context: ./backend
+      dockerfile: Dockerfile-req
     ports:
       - "8000:8000"
     env_file:
