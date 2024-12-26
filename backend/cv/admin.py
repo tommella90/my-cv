@@ -48,3 +48,5 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Experience, ExperienceAdmin)
+
+

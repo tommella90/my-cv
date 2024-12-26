@@ -17,4 +17,5 @@ dependencies = [
     "psycopg2-binary>=2.9.10",
     "pandas>=2.2.3",
     "plotly>=5.24.1",
+    "django-storages>=1.14.4",
 ]

@@ -7,6 +7,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 env_path = BASE_DIR / '.env'
 
+# http://127.0.0.1:8000/admin/cv/experience/9/change/
 # Now you can access the SECRET_KEY from the environment
 SECRET_KEY = os.environ.get("SECRET_KEY")
 

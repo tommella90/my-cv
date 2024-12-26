@@ -11,6 +11,7 @@ class Education(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
     ranking = models.IntegerField(blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.institution} at {self.title}"
@@ -38,7 +39,7 @@ class Experience(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
     ranking = models.IntegerField(blank=True, null=True)
-
+    image_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.title} at {self.company}"
@@ -61,3 +62,5 @@ class ExperienceImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.experience.title}: {self.image.url}"
+
+
