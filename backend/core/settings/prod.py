@@ -10,7 +10,7 @@ env_path = BASE_DIR / '.env'
 # Now you can access the SECRET_KEY from the environment
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 ALLOWED_HOSTS = [
