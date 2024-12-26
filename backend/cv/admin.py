@@ -18,17 +18,17 @@ class EducationImageInline(admin.TabularInline):
 
 class ExperienceDescriptionInline(admin.TabularInline):
     model = ExperienceDescription
-
 class ExperienceImageInline(admin.TabularInline):
     model = ExperienceImage
     readonly_fields = ['thumbnail']
 
     def thumbnail(self, obj):
         if obj.image and obj.image.name != '':
+            # Assuming that image.url will point to the correct URL in Google Cloud Storage
             return format_html(f'<img src="{obj.image.url}" class="thumbnail" />')
         return "No Image"
 
-    fields = ['image', 'thumbnail']  # Ensure thumbnail is displayed in the form
+    fields = ['image', 'thumbnail'] 
 
 class EducationAdmin(admin.ModelAdmin):
     inlines = [EducationDescriptionInline, EducationImageInline]

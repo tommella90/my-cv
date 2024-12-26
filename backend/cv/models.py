@@ -55,6 +55,9 @@ class ExperienceDescription(models.Model):
 class ExperienceImage(models.Model):
     experience = models.ForeignKey(Experience, related_name="images", on_delete=models.CASCADE)
     image = models.ImageField(
-        upload_to="experience_images/", 
+        upload_to="experience_images/",
         validators=[validate_file_size]
-        )
+    )
+
+    def __str__(self):
+        return f"Image for {self.experience.title}: {self.image.url}"

@@ -1,6 +1,9 @@
 from pathlib import Path
-# from celery.schedules import crontab
 import os
+from .gcs_config import GS_CREDENTIALS, GS_BUCKET_NAME
+
+# Use Google Cloud Storage backend for Django file storage
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -59,7 +62,6 @@ CORS_ALLOW_HEADERS = [
     "Authorization",
     "Content-Type",
 ]
-
 
 ROOT_URLCONF = "core.urls"
 
