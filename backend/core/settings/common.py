@@ -1,21 +1,5 @@
 from pathlib import Path
 import os
-from .gcs_config import GS_CREDENTIALS, GS_BUCKET_NAME
-
-# Use Google Cloud Storage backend for Django file storage
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}
-STATIC_URL = f'https://storage.googleapis.com/{GS_BUCKET_NAME}/cv/'
-DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
-STATICFILES_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
-GS_DEFAULT_ACL = 'publicRead'
-
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

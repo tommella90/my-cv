@@ -10,7 +10,7 @@ services:
     env_file:
       - .env
     environment:
-      - DJANGO_SETTINGS_MODULE=core.settings
+      - DJANGO_SETTINGS_MODULE=core.settings.prod
     volumes:
       - ./backend:/app
     image: django-backend

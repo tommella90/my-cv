@@ -16,8 +16,7 @@ DEBUG = False
 # ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 ALLOWED_HOSTS = [
     'tommella-cv-prod-ee14d9b8bb74.herokuapp.com', 
-    '127.0.0.1',
-    'localhost',
+    '0.0.0.0'
 ]
 
 DATABASES = {
