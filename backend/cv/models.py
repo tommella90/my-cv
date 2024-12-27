@@ -21,7 +21,7 @@ class EducationImage(models.Model):
     education = models.ForeignKey(Education, related_name='images', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='education_images/')
 
-
+ 
 class EducationDescription(models.Model):
     education = models.ForeignKey(Education, related_name="descriptions", on_delete=models.CASCADE)
     description = models.TextField()

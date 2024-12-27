@@ -25,7 +25,7 @@ class EducationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Education
-        fields = ['id', 'title', 'institution', 'location', 'grade', 'start_date', 'end_date', 'ranking', 'descriptions', 'images']
+        fields = ['id', 'title', 'institution', 'location', 'grade', 'start_date', 'end_date', 'image_url', 'ranking', 'descriptions', 'images']
 
 
 class ExperienceDescriptionSerializer(serializers.ModelSerializer):
@@ -52,6 +52,6 @@ class ExperienceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Experience
-        fields = ['id', 'title', 'company', 'location', 'start_date', 'end_date', 'ranking', 'descriptions', 'images']
+        fields = ['id', 'title', 'company', 'location', 'start_date', 'end_date', 'image_url', 'ranking', 'descriptions', 'images']
 
 
