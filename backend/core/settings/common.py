@@ -40,7 +40,7 @@ MIDDLEWARE = [
 
 
 CORS_ALLOWED_ORIGINS = [
-    # "https://tommella90.github.io/tommella-frontend/",
+    "https://tommella90.github.io/tommella-frontend/",
     "http://localhost:8080", 
     "http://localhost:8081",
 
