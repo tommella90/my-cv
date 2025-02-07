@@ -8,5 +8,5 @@ build:
     # web: Dockerfile-pipenv
 
 run:
-  web: gunicorn backend/core.wsgi:application
+  web: gunicorn core.wsgi:application
 
