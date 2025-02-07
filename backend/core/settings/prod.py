@@ -15,10 +15,12 @@ DEBUG = False
 
 # ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1", "localhost"]
 ALLOWED_HOSTS = [
-    # 'tommella-cv-prod-ee14d9b8bb74.herokuapp.com', 
-    'https://tommella-general-storage-83d44de1134b.herokuapp.com/',
-    '0.0.0.0'
-]
+    "tommella-general-storage-83d44de1134b.herokuapp.com", 
+    "localhost", 
+    "127.0.0.1", 
+    "0.0.0.0"
+    ]
+
 
 DATABASES = {
     'default': dj_database_url.config(default=os.environ.get("DATABASE_URL"))
